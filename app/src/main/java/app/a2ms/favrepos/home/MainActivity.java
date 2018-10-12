@@ -1,7 +1,9 @@
-package app.a2ms.favrepos;
+package app.a2ms.favrepos.home;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import app.a2ms.favrepos.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package app.a2ms.favrepos;
+package app.a2ms.favrepos.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import app.a2ms.favrepos.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
