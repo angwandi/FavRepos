@@ -1,4 +1,4 @@
-package app.a2ms.favrepos.home;
+package app.a2ms.favrepos.home.home;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import app.a2ms.favrepos.R;
+import app.a2ms.favrepos.home.details.DetailsFragment;
+import app.a2ms.favrepos.home.model.Repo;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment implements RepoSelectedListener {
 
     @BindView(R.id.recycler_view)
     RecyclerView listView;
@@ -41,9 +43,20 @@ public class ListFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(ListViewModel.class);
 
         listView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        listView.setAdapter(new RepoListAdapter(viewModel, this));
+        listView.setAdapter(new RepoListAdapter(viewModel, this, this));
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
         observeViewModel();
+    }
+
+    @Override
+    public void onRepoSelected(Repo repo) {
+        SelectedRepoViewModel selectedRepoViewModel = ViewModelProviders.of(getActivity())
+                .get(SelectedRepoViewModel.class);
+        selectedRepoViewModel.setSelectedRepo(repo);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.screen_container, new DetailsFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     private void observeViewModel() {

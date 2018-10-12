@@ -1,4 +1,4 @@
-package app.a2ms.favrepos.home;
+package app.a2ms.favrepos.home.home;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
